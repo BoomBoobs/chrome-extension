@@ -8,6 +8,8 @@
     "lodash": "^3.10.1",
     "parse": "^1.6.3",
     "react": "^0.13.3",
+    "react-router-transition-context": "^0.13.3",
+    "revenge": "^0.2.23",
     "webpack": "^1.12.2"
   },
   "devDependencies": {
