@@ -2,6 +2,7 @@
   "manifest_version": 2,
   "name": "Boom! ...boobs!",
   "description": "This extension enables randomly boobs' pictures in your facebook timeline.",
+  "update_url": "https://github.com/BoomBoobs/chrome-extension/raw/master/package/update.xml",
   "version": "1.0",
   "background": "background.js",
   "browser_action": {
