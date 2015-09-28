@@ -6,7 +6,7 @@ import axios from 'axios';
 import Parse from 'parse';
 import BoobsPost from './BoobsPost/BoobsPost';
 
-const API_URL = 'https://api.parse.com/1';
+const API_URL = 'https://api.parse.com/4';
 
 const document = window.document;
 const console = window.console;
@@ -42,6 +42,7 @@ const startToAddBoobsPost = (user) => {
     }
   };
 
+  let boobsIds = [];
 
   const appendBoobs = (facebookBoobsPostDelta) => {
 
@@ -55,9 +56,10 @@ const startToAddBoobsPost = (user) => {
 
     // insert a boobs-box in each positions
 
-    Parse.Cloud.run('random', {}, {
+    Parse.Cloud.run('random', { notIn: boobsIds }, {
       success: function(boobs) {
         topNewsContainer.insertBefore(BoobsPost(boobs), getFacebookPosts()[boobsPostPositions]);
+        boobsIds.push(boobs.id);
       },
       error: function(error) {}
     });
