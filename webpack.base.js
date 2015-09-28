@@ -32,7 +32,7 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ],
   externals: {
-    "window": "window"
+    'window': 'window'
   },
 
   module: {
@@ -45,10 +45,10 @@ module.exports = {
       },
       // copy required static files
       {
-        test: paths.ASSETS,
-        loader: 'file?name=[path][name].[ext]&context=' + paths.ASSETS,
+        test: paths.SRC,
+        loader: 'file?name=[path][name].[ext]&context=' + paths.SRC,
         exclude: [
-          paths.ASSETS + '/css'
+          paths.ASSETS + '/styles'
         ]
       },
       {

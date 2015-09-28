@@ -33,7 +33,7 @@ if (config.gzip) {
 
 module.exports = _.extend({}, base, {
 
-  entry: path.resolve(paths.SRC, 'plugin.js'),
+  entry: path.resolve(paths.SRC, 'index.js'),
 
   devtool: 'source-map',
 

@@ -54,8 +54,6 @@ const startToAddBoobsPost = (user) => {
     const randomPos = random(previousFacebookPostsLength, postsPositions.length - 1);
     const boobsPostPositions = pullAt(postsPositions, randomPos);
 
-    // insert a boobs-box in each positions
-
     Parse.Cloud.run('random', { notIn: boobsIds }, {
       success: function(boobs) {
         topNewsContainer.insertBefore(BoobsPost(boobs), getFacebookPosts()[boobsPostPositions]);
