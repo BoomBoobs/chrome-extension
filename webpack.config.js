@@ -12,11 +12,13 @@ if (config.reactHot) {
   babelLoaders.unshift('react-hot');
 }
 
+console.log(base.module);
+
 module.exports = _.extend({}, base, {
 
   entry: [
     'webpack/hot/dev-server',
-    path.resolve(paths.SRC, 'plugin.js')
+    path.resolve(paths.SRC, 'index.js')
   ],
 
   debug: true,

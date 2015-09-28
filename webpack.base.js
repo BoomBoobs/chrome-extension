@@ -38,18 +38,10 @@ module.exports = {
   module: {
     preLoaders: preLoaders,
     loaders: [
-      // require .json
-      {
-        test: /\.json$/,
-        loader: 'json'
-      },
       // copy required static files
       {
-        test: paths.SRC,
-        loader: 'file?name=[path][name].[ext]&context=' + paths.SRC,
-        exclude: [
-          paths.ASSETS + '/styles'
-        ]
+        test: /\.(html|jpg|json)$/,
+        loader: 'file?name=[path][name].[ext]&context=' + paths.SRC
       },
       {
         test: /\.less$/,

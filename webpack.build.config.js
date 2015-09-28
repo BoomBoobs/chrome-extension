@@ -33,7 +33,7 @@ if (config.gzip) {
 
 module.exports = _.extend({}, base, {
 
-  entry: path.resolve(paths.SRC, 'index.js'),
+  entry: path.resolve(paths.SRC, 'plugin.js'),
 
   devtool: 'source-map',
 
@@ -45,7 +45,7 @@ module.exports = _.extend({}, base, {
     loaders: base.module.loaders.concat([
       // babel transpiler
       {
-        test: /\.jsx?$/, // test for both js and jsx
+        test: /\.js$/, // test for both js and jsx
         loaders: ['babel?stage=0&loose'],
         exclude: [/node_modules/, paths.ASSETS],
         include: [paths.SRC, paths.TEST],
@@ -54,7 +54,7 @@ module.exports = _.extend({}, base, {
       {
         test: /\.css?$/,
         loader: ExtractTextPlugin.extract('style', 'css'),
-        exclude: paths.ASSETS + '/landing'
+        exclude: paths.ASSETS
       }
     ])
   })

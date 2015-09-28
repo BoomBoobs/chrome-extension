@@ -3,7 +3,7 @@
   "name": "Boom! ...boobs!",
   "description": "This extension enables randomly boobs' pictures in your facebook timeline.",
   "version": "1.0",
-  "background": "src/background.js",
+  "background": "background.js",
   "browser_action": {
     "default_icon": "icon.jpg",
     "default_popup": "popup.html"
@@ -14,8 +14,8 @@
         "http://*.facebook.com/",
         "https://*.facebook.com/"
       ],
-      "css": ["./src/styles/facebook.css"],
-      "js": [ "build/bundle.js", "node_modules/jquery/dist/jquery.min.js" ],
+      "css": ["./styles/facebook.css"],
+      "js": [ "bundle.js" ],
       "run_at": "document_end"
     }
   ],

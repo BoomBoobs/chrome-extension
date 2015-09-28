@@ -1,3 +1,9 @@
+require('./manifest.json');
+require('./popup.html');
+require('./icon.jpg');
+require('./background.js');
+require('!file?name=styles/facebook.css!less!./styles/facebook.less');
+
 
 import window from 'window';
 import React from 'react';
