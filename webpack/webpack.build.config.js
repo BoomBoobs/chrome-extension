@@ -2,8 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const _ = require('lodash');
 const base = require('./webpack.base');
-const config = require('./config');
-const paths = require('./paths');
+const config = require('../config');
+const paths = require('../paths');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
@@ -33,7 +33,22 @@ if (config.gzip) {
 
 module.exports = _.extend({}, base, {
 
-  entry: path.resolve(paths.SRC, 'plugin.js'),
+  entry: {
+    plugin: path.resolve(paths.SRC, 'plugin/plugin.js'),
+    popup: path.resolve(paths.SRC, 'popup/index.js')
+  },
+
+  stats: {
+    children: false
+  },
+
+  output: {
+    library: 'boomBoobs',
+    libraryTarget: 'var',
+    path: paths.BUILD,
+    publicPath: paths.PUBLIC_PATH || '',
+    filename: '/[name]/[name].js'
+  },
 
   devtool: 'source-map',
 

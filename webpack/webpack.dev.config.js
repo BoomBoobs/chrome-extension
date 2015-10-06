@@ -2,9 +2,10 @@ var
   path = require('path'),
   _ = require('lodash'),
   base = require('./webpack.base'),
-  config = require('./config'),
-  paths = require('./paths'),
+  config = require('../config'),
+  paths = require('../paths'),
   HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 var babelLoaders = ['babel?loose&stage=0'];
 
@@ -12,24 +13,32 @@ if (config.reactHot) {
   babelLoaders.unshift('react-hot');
 }
 
-console.log(base.module);
 
 module.exports = _.extend({}, base, {
 
-  entry: [
-    'webpack/hot/dev-server',
-    path.resolve(paths.SRC, 'index.js')
-  ],
+  entry: {
+    popup: [
+      'webpack-dev-server/client',
+      'webpack/hot/only-dev-server',
+      path.resolve(paths.SRC, 'popup/index.js')
+    ]
+  },
+
+  output: {
+    path: path.join(__dirname, '../dev/popup'),
+    filename: '[name].bundle.js',
+    chunkFilename: '[id].chunk.js'
+  },
 
   debug: true,
 
   devtool: config.devTool || 'source-map',
 
   devServer: {
-    contentBase: paths.BUILD,
+    contentBase: paths.DEV,
     hot: true,
     inline: true,
-    port: config.port
+    port: config.port || 3000
   },
 
   module: _.extend({}, base.module, {

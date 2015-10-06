@@ -1,6 +1,6 @@
 var webpack = require('webpack');
-var paths = require('./paths');
-var config = require('./config');
+var paths = require('../paths');
+var config = require('../config');
 
 
 
@@ -19,20 +19,13 @@ module.exports = {
     children: false
   },
 
-  output: {
-    library: 'boomBoobs',
-    libraryTarget: 'var',
-    path: paths.BUILD,
-    publicPath: paths.PUBLIC_PATH || '',
-    filename: '/bundle.js'
-  },
-
   plugins: [
     // Define free variables. Useful for having development builds with debug logging or adding global constants.
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ],
   externals: {
-    'window': 'window'
+    'window': 'window',
+    'require': 'require'
   },
 
   module: {
