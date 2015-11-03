@@ -1,4 +1,4 @@
 build/
 node_modules/
 dev/
-package/key.pem
+key.pem
