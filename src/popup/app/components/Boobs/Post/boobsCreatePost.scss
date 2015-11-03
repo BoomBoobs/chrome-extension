@@ -1,0 +1,106 @@
+@import '../../../theme/variables.scss';
+
+.boobs-post-create-form {
+  position: relative;
+
+  padding: 10px;
+
+  img {
+    width: auto;
+    max-width: 100%;
+    max-height: 300px;
+  }
+
+  .boobs-owner {
+    padding: 10px 0;
+    .Select {
+      width: 100%;
+      margin-right: 10px;
+    }
+  }
+
+  .field {
+    div, input {
+      display: block;
+    }
+  }
+
+  input {
+    display: block;
+
+    border-width: 1px;
+    border-radius: 5px;
+  }
+
+  label {
+    display: block;
+
+    margin-bottom: 8px;
+    a {
+      cursor: pointer;
+      text-decoration: underline;
+
+      color: $camelot;
+    }
+  }
+
+  h3 {
+    color: $camelot;
+  }
+
+  button {
+    height: 30px;
+    padding: 0 5px;
+
+    border-radius: 5px;
+    background: $tapestry;
+
+
+    &.create-post {
+      margin-top: 20px;
+    }
+
+    &.disabled {
+      opacity: .4;
+    }
+  }
+
+
+  input[type='file'] {
+    height: 30px;
+    margin-right: 10px;
+
+    &::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+
+    &::before {
+      font-size: 10pt;
+      font-weight: 700;
+
+      display: inline-block;
+
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      padding: 5px 8px;
+
+      content: 'Select some files';
+      cursor: pointer;
+      -webkit-user-select: none;
+      white-space: nowrap;
+
+      color: $castro;
+      border: 1px solid $camelot;
+      border-radius: 3px;
+      outline: none;
+      background: $tapestry;
+    }
+    &:hover::before {
+      background: $camelot;
+    }
+    &:active::before {
+      background: $camelot;
+    }
+  }
+}

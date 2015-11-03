@@ -1,0 +1,27 @@
+@import './variables.scss';
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+
+  min-width: 400px;
+
+  color: $castro;
+  background: $shocking;
+
+  >div {
+    padding: 10px;
+  }
+}
+
+button {
+  padding: .5em;
+
+  border: none;
+}
+
+a {
+  text-decoration: none;
+
+  color: $camelot;
+}
