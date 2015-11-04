@@ -1,4 +1,4 @@
-require('./index.html');
+// require('./index.html');
 require('../icon48.png');
 require('../icon96.png');
 require('../icon128.png');

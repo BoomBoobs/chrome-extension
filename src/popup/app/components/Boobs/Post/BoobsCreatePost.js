@@ -238,12 +238,14 @@ export default class BoobsCreatePost extends React.Component {
       <form className="boobs-post-create-form" onSubmit={locals.onSubmit}>
         {!locals.boobsFile && uploadBoobsFileBlock()}
         {locals.boobsFile && boobsOwnerBlock()}
-        <button
-          className={locals.createButtonClasses}
-          onClick={locals.onSubmit}
-        >
-          Create BoobsPost!
-        </button>
+        {locals.boobsFile && (
+          <button
+            className={locals.createButtonClasses}
+            onClick={locals.onSubmit}
+          >
+            Create BoobsPost!
+          </button>
+        )}
         {locals.isBoobsFileUploading && !locals.boobsFile && <LoadingSpinner size="20px" />}
       </form>
     );

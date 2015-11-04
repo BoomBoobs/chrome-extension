@@ -9,7 +9,9 @@ body {
   color: $castro;
   background: $shocking;
 
-  >div {
+  .app-wrapper {
+    max-width: 600px;
+    margin: auto;
     padding: 10px;
   }
 }
@@ -24,4 +26,8 @@ a {
   text-decoration: none;
 
   color: $camelot;
+}
+
+input {
+  border-color: $castro;
 }
