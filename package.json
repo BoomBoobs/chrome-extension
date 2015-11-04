@@ -47,6 +47,7 @@
     "start": "rm -rf dev/ && webpack-dev-server --config webpack/webpack.dev.config.babel.js --progress --hot --inline",
     "build": "rm -rf build/ && webpack --config webpack/webpack.build.config.babel.js --progress",
     "package": "npm run build && node --harmony package.js",
+    "serve": "cd build && http-server",
     "lint": "eslint ./src",
     "preversion": "npm run lint && npm run test",
     "postversion": "npm shrinkwrap && mv npm-shrinkwrap.json npm-shrinkwrap-deploy.json && git add npm-shrinkwrap-deploy.json -f && npm shrinkwrap --dev && git add npm-shrinkwrap.json package.json -f && git commit -m \"shrinkwrap\""

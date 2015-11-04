@@ -24,9 +24,10 @@ module.exports = _.extend({}, base, {
   },
 
   output: {
-    path: path.join(__dirname, '../dev/popup'),
+    path: paths.DEV,
+    publicPath: paths.PUBLIC_PATH || '',
     filename: '/[name]/[name].bundle.js',
-    chunkFilename: '[name]/[id].chunk.js'
+    chunkFilename: '/[name]/[name]-[id].chunk.js'
   },
 
   debug: true,
@@ -52,14 +53,12 @@ module.exports = _.extend({}, base, {
       {
         test: /\.css?$/,
         loaders: ['style-loader', 'css-loader']
-        // include: [paths.SRC]
       },
       // SASS loaders
       {
-        test: /\.scss?$/,
+        test: /\.scss$/,
         exclude: paths.THEME_VARIABLES,
         loaders: ['style-loader', 'css-loader', 'sass-loader?sourceMap']
-        // include: [paths.SRC]
       }
     ])
   })
