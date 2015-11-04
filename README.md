@@ -8,6 +8,6 @@ When you will be tired of seeing boobs on your Facebook timeline, just delete th
 
 ## Installation
 - Download latest build [here](https://github.com/BoomBoobs/chrome-extension/raw/master/package/boomboobs.crx)
-- Open Google Chrome extension tab ([chrome://extension](chrome://extensions))
+- Open Google Chrome extension tab ([chrome://extensions](chrome://extensions))
 - Drag **boomboobs.crx** on your Google Chrome extensions tab
 - Enjoy boobs on Facebook
