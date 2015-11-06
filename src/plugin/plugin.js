@@ -62,8 +62,7 @@ const startToAddBoobsPost = () => {
 };
 
 Parse.initialize('hrb0yHVkItcCXaMJp6S90K8Uglb7TWPaiV2lrsKg', '5bYXE74sdRkVRaBYju1mV9zowGEWDUpsdGHmVhiG');
-
-Parse.User.logIn('BoomBoobs', 'BoomBoobs', {
-  error: () => {},
-  success: startToAddBoobsPost
-});
+if (Parse.User.current()) {
+  Parse.User.logOut();
+}
+Parse.User.logIn('BoomBoobsPostCreator', 'BoomBoobsPostCreator', startToAddBoobsPost);
