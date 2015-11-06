@@ -23,10 +23,9 @@ export default class BoobsPostCreate extends React.Component {
       .then(() => this.forceUpdate());
   }
 
-  createBoobsPost = (boobsFile, boobsOwner) => {
+  createBoobsPost = (boobsFile, boobsOwner) =>
     this.props.app.createBoobsPost(boobsFile, boobsOwner)
-      .then(() => this.forceUpdate());
-  }
+      .then(() => this.forceUpdate())
 
   getLocals() {
     const {

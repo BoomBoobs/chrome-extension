@@ -23,18 +23,17 @@ export default class API {
     const boobsPost = new Boobs();
     boobsPost.set('boobsOwner', new BoobsOwner({ id: boobsOwnerId }));
     boobsPost.set('preview', file.url());
-    return boobsPost.save();
+    return Promise.resolve(boobsPost.save());
   }
 
   @log('createBoobsOwner')
   createBoobsOwner(boobsOwner) {
-    return new BoobsOwner(boobsOwner).save();
+    return Promise.resolve(new BoobsOwner(boobsOwner).save());
   }
 
   @log('getBoobsOwners')
   getBoobsOwners() {
-    const query = new Parse.Query(BoobsOwner);
-    return query.find();
+    return Promise.resolve(new Parse.Query(BoobsOwner).find());
   }
 
   @log('getBoobOwner')

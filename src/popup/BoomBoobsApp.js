@@ -1,17 +1,20 @@
 import { App } from 'revenge';
 import getQueries from './queries';
+import getCommands from './commands';
 
 export default class BoomBoobsApp extends App {
 
   constructor({ API, db, state = {}, data = {} }) {
+    const queries = getQueries(API);
     super({
-      queries: getQueries(API),
+      queries,
       state,
       data,
       remote: false
     });
     this.API = API;
     this.db = db;
+    this.commands = getCommands(API, queries);
   }
 
   fetch(...args) {
@@ -60,11 +63,8 @@ export default class BoomBoobsApp extends App {
       }
     })
     .then(({ boobsFile, boobsOwnerId }) => {
-      return this.API.createBoobsPost(boobsOwnerId, boobsFile)
-        .then(boobsPost => {
-          this.db.deleteBoobsFile();
-          return boobsPost;
-        });
+      return this.runCommand(this.commands.doCreateBoobsPost({ boobsFile, boobsOwnerId }))
+        .then(() => this.db.deleteBoobsFile());
     });
 
   }

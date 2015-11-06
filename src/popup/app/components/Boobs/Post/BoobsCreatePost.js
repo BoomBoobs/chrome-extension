@@ -12,9 +12,9 @@ import 'react-select/dist/default.css';
 import './boobsCreatePost.scss';
 const initialState = {
   isBoobsFileChosen: false,
-  isBoobsFileUploading: false,
   addNewBoobsOwner: false,
   boobsPostCreated: false,
+  loading: false,
   form: {
     boobsOwner: {
       id: null,
@@ -28,7 +28,7 @@ const initialState = {
 @pure
 @props({
   app: App,
-  boobsFile: t.Obj,
+  boobsFile: t.maybe(t.Obj),
   prepareBoobsFile: t.Func,
   createBoobsPost: t.Func,
   boobsOwners: t.maybe(t.list(t.Obj)),
@@ -51,8 +51,10 @@ export default class BoobsCreatePost extends React.Component {
     }, () => {
       const { boobsOwner } = this.state.form;
       this.props.createBoobsPost(this.props.boobsFile.file, boobsOwner)
-      // be VERY optimistic
-      this.setState(initialState);
+        .then(() => {
+          // be VERY optimistic
+          this.setState(initialState);
+        });
     });
   }
 
@@ -104,8 +106,8 @@ export default class BoobsCreatePost extends React.Component {
 
     const {
       isBoobsFileChosen,
-      isBoobsFileUploading,
       addNewBoobsOwner,
+      loading,
       form: {
         boobsOwner
       }
@@ -116,11 +118,6 @@ export default class BoobsCreatePost extends React.Component {
       boobsOwners,
       boobsOwnersLoading
     } = props;
-
-    const uploadBoobsFileButtonClasses = cx({
-      loading: isBoobsFileUploading,
-      disabled: !boobsFile && !isBoobsFileChosen
-    });
 
     const boobsOwnersOptions = boobsOwners ? boobsOwners.map(bo => ({
       value: bo.id,
@@ -136,6 +133,7 @@ export default class BoobsCreatePost extends React.Component {
       form: {
         boobsOwner
       },
+      loading,
       onSubmit: boomBoobsPostCreationEnabled && onSubmit,
       togglAddNewBoobsOwner: this.togglAddNewBoobsOwner,
       boobsFile,
@@ -145,8 +143,6 @@ export default class BoobsCreatePost extends React.Component {
       bindBoobsOwnerKey: this.bindBoobsOwnerKey,
       onBoobOwnerChange,
       filterOptions: (options = [], filter) => options.filter(o => includes(o.label.toLowerCase(), filter.toLowerCase())),
-      uploadBoobsFileButtonClasses,
-      isBoobsFileUploading,
       onBoobsFileChange,
       onBoobsFileSubmit: isBoobsFileChosen && onBoobsFileSubmit,
       createButtonClasses
@@ -167,21 +163,13 @@ export default class BoobsCreatePost extends React.Component {
               accept="image/*"
             />
           </FlexView>
-          <FlexView column>
-            <button
-              className={locals.uploadBoobsFileButtonClasses}
-              onClick={locals.onBoobsFileSubmit}
-            >
-              Upload!
-            </button>
-          </FlexView>
         </FlexView>
       </div>
     );
 
     const boobsOwnerBlock = () => (
       <div>
-        <img src={locals.boobsFile.url} />
+        <img src={locals.boobsFile && locals.boobsFile.url} />
         <FlexView column grow className="boobs-owner">
           {!locals.addNewBoobsOwner ?
             (
@@ -246,7 +234,7 @@ export default class BoobsCreatePost extends React.Component {
             Create BoobsPost!
           </button>
         )}
-        {locals.isBoobsFileUploading && !locals.boobsFile && <LoadingSpinner size="20px" />}
+        {locals.loading && <LoadingSpinner size="20px" />}
       </form>
     );
   }
