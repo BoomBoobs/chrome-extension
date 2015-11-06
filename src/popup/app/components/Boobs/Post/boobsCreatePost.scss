@@ -16,6 +16,44 @@
     .Select {
       width: 100%;
       margin-right: 10px;
+
+      color: $camelot;
+
+      margin-bottom: 10px;
+
+      .Select-control {
+        color: $castro;
+        border-color: $camelot;
+        background: $tapestry;
+        .Select-placeholder {
+          color: $castro;
+        }
+        .Select-arrow {
+          border-color: $castro transparent transparent;
+        }
+
+        .Select-clear {
+          color: $castro;
+        }
+      }
+
+      .Select-menu-outer {
+        border: 1px solid $castro;
+        .Select-menu {
+          .Select-option {
+            color: $castro;
+            background: $tapestry;
+
+            &:not(:last-child) {
+              border-bottom: 1px solid $castro;
+            }
+
+            &.is-focused {
+              background: rgba($tapestry, .6);
+            }
+          }
+        }
+      }
     }
   }
 
@@ -23,29 +61,6 @@
     div, input {
       display: block;
     }
-  }
-
-  input {
-    display: block;
-
-    border-width: 1px;
-    border-radius: 5px;
-  }
-
-  label {
-    display: block;
-
-    margin-bottom: 8px;
-    a {
-      cursor: pointer;
-      text-decoration: underline;
-
-      color: $camelot;
-    }
-  }
-
-  h3 {
-    color: $camelot;
   }
 
   button {

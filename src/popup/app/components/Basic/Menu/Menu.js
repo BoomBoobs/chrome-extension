@@ -10,10 +10,10 @@ export default class Menu extends React.Component {
     return {
       menuItems: [{
         text: 'Create',
-        to: '/boobs-post'
+        to: '/'
       }, {
         text: 'Finder',
-        to: '/boobs-post/finder'
+        to: '/finder'
       }]
     };
   }

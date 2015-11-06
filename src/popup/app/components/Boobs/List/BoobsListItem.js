@@ -1,7 +1,6 @@
 import React from 'react';
 import { props, pure, skinnable } from 'revenge';
 import { FlexView } from 'revenge-react-components';
-import BoobsOwnerCard from '../../BoobsOwnerCard/BoobsOwnerCard';
 
 import { Boobs } from '../../../models';
 
@@ -14,16 +13,21 @@ import './boobsListItem.scss';
 })
 export default class BoobsListItem extends React.Component {
   getLocals() {
-    return this.props;
+    const { boobs } = this.props;
+    const boobsOwner = boobs.get('boobsOwner');
+    return {
+      preview: boobs.get('preview'),
+      boobsOwner: {
+        displayName: `${boobsOwner.get('firstName')} ${boobsOwner.get('lastName')}`
+      }
+    }
   }
 
-  template({ boobs }) {
+  template({ preview, boobsOwner: { displayName } }) {
     return (
       <FlexView grow column className="boobs-post">
-        <img src={boobs.get('preview')} />
-        <BoobsOwnerCard
-          boobsOwner={boobs.get('boobsOwner')}
-        />
+        <img src={preview} />
+        <div>{displayName}</div>
       </FlexView>
     );
   }
