@@ -10,7 +10,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const plugins = [
   // cause failed production builds to fail faster
   new webpack.NoErrorsPlugin(),
-  new ExtractTextPlugin('style', '/style.[hash].min.css')
+  new ExtractTextPlugin('style', '/[name]/style.min.css')
 ];
 
 if (config.uglify) {
@@ -66,15 +66,12 @@ module.exports = _.extend({}, base, {
       },
       // style!css loaders for semantic
       {
-        test: /\.css?$/,
-        loader: ExtractTextPlugin.extract('style', 'css'),
-        exclude: paths.ASSETS
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style', 'css')
       },
       {
-        test: /\.scss?$/,
-        exclude: paths.THEME_VARIABLES,
-        loaders: ['style-loader', 'css-loader', 'sass-loader?sourceMap']
-        // include: [paths.SRC]
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
       }
     ])
   })

@@ -1,30 +1,20 @@
-require('./manifest.json');
-require('./popup.html');
-require('./icon.jpg');
-require('./background.js');
-require('!file?name=styles/facebook.css!less!./styles/facebook.less');
+require('../manifest.json');
+require('../icon.jpg');
+require('!file?name=plugin/styles/facebook.css!less!./styles/facebook.less');
 
 
 import window from 'window';
-import React from 'react';
-import { each, filter, first, pullAt, random, range, zip } from 'lodash';
-import axios from 'axios';
+import { filter, first, pullAt, random, range } from 'lodash';
 import Parse from 'parse';
 import BoobsPost from './BoobsPost/BoobsPost';
 
-const API_URL = 'https://api.parse.com/4';
 
 const document = window.document;
-const console = window.console;
 
 const boobsPostRatio = 2;
 
-const buildUrl = (path) => {
-  return `${API_URL}${path}`;
-};
 
-
-const startToAddBoobsPost = (user) => {
+const startToAddBoobsPost = () => {
 
   // get timeline wrapper
   const topNewsMainStream = document.querySelector('[id^=\'topnews_main_stream\']');
@@ -37,14 +27,12 @@ const startToAddBoobsPost = (user) => {
 
   let previousFacebookPostsLength = getFacebookPostsLength();
 
-  const readyToAttachBoobsOnScroll = (event) => {
+  const readyToAttachBoobsOnScroll = () => {
     const facebookBoobsPostDelta = getFacebookPostsLength() - getBoobsPostsLength();
 
     if (previousFacebookPostsLength < getFacebookPostsLength() && facebookBoobsPostDelta >= boobsPostRatio) {
       appendBoobs(facebookBoobsPostDelta);
       previousFacebookPostsLength = getFacebookPostsLength();
-    } else {
-      // console.log('wait to append boobs!');
     }
   };
 
@@ -53,7 +41,7 @@ const startToAddBoobsPost = (user) => {
   const appendBoobs = (facebookBoobsPostDelta) => {
 
     // find random positions of timeline wrapper children
-    const boobsPostsCount = Math.ceil(facebookBoobsPostDelta * boobsPostRatio);
+    // const boobsPostsCount = Math.ceil(facebookBoobsPostDelta * boobsPostRatio);
 
     // pick random n° positions equal to boobsPostsCount from postBoxesLength
     const postsPositions = range(previousFacebookPostsLength, previousFacebookPostsLength + facebookBoobsPostDelta);
@@ -61,11 +49,11 @@ const startToAddBoobsPost = (user) => {
     const boobsPostPositions = pullAt(postsPositions, randomPos);
 
     Parse.Cloud.run('random', { notIn: boobsIds }, {
-      success: function(boobs) {
+      success: (boobs) => {
         topNewsContainer.insertBefore(BoobsPost(boobs), getFacebookPosts()[boobsPostPositions]);
         boobsIds.push(boobs.id);
       },
-      error: function(error) {}
+      error: () => {}
     });
 
   };
@@ -74,10 +62,7 @@ const startToAddBoobsPost = (user) => {
 };
 
 Parse.initialize('hrb0yHVkItcCXaMJp6S90K8Uglb7TWPaiV2lrsKg', '5bYXE74sdRkVRaBYju1mV9zowGEWDUpsdGHmVhiG');
-
-Parse.User.logIn('BoomBoobs', 'BoomBoobs', {
-  error: (err) => {
-    console.log(err);
-  },
-  success: startToAddBoobsPost
-});
+if (Parse.User.current()) {
+  Parse.User.logOut();
+}
+Parse.User.logIn('BoomBoobsPostCreator', 'BoomBoobsPostCreator', startToAddBoobsPost);

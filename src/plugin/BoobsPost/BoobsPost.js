@@ -1,6 +1,7 @@
 import React from 'react';
 
 import UserInfoBlock from './UserInfoBlock';
+import UserContent from './UserContent';
 import PostImage from './PostImage';
 import PostInteractionsBox from './PostInteractionsBox';
 
@@ -22,6 +23,7 @@ export default function BoobPost(boobs) {
                       <div className="userContentWrapper _5pcr">
                         <div className="_1dwg">
                           <UserInfoBlock boobs={boobs} />
+                          <UserContent boobs={boobs} />
                           <PostImage boobs={boobs} />
                         </div>
                         <PostInteractionsBox />

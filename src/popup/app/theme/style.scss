@@ -1,0 +1,58 @@
+@import './variables.scss';
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+
+  min-width: 400px;
+
+  color: $castro;
+  background: $shocking;
+
+  .app-wrapper {
+    max-width: 600px;
+    margin: auto;
+    padding: 10px;
+  }
+}
+
+button {
+  padding: .5em;
+
+  border: none;
+}
+
+a {
+  text-decoration: none;
+
+  color: $camelot;
+}
+
+input {
+  display: block;
+
+  border-width: 1px;
+  border-color: $castro;
+  border-radius: 5px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+
+label {
+  display: block;
+
+  margin-bottom: 8px;
+  a {
+    cursor: pointer;
+    text-decoration: underline;
+
+    color: $camelot;
+  }
+}
+
+h3 {
+  color: $camelot;
+}

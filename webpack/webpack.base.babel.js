@@ -1,7 +1,8 @@
 const webpack = require('webpack');
+const path = require('path');
 const paths = require('../paths');
 const config = require('../config');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 const preLoaders = config.eslint ? [
@@ -21,7 +22,13 @@ module.exports = {
 
   plugins: [
     // Define free variables. Useful for having development builds with debug logging or adding global constants.
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new HtmlWebpackPlugin({
+      filename: 'popup/index.html',
+      template: path.resolve(__dirname, '../templates/popup/index.html'),
+      inject: 'body',
+      chunks: ['popup']
+    })
   ],
   externals: {
     'window': 'window',
