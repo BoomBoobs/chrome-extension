@@ -21,7 +21,7 @@ export default class Menu extends React.Component {
   template(locals) {
     return (
       <div className="menu">
-        {locals.menuItems.map(mi => (<Link className="item" to={mi.to}>{mi.text}</Link>))}
+        {locals.menuItems.map((mi, i) => (<Link key={i} className="item" to={mi.to}>{mi.text}</Link>))}
       </div>
     );
   }
