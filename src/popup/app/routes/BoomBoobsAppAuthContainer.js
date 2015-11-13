@@ -17,7 +17,7 @@ import Menu from '../components/Basic/Menu/Menu';
 export default class BoomBoobsAppAuthContainer extends React.Component {
 
   render() {
-    const { user, router, ...other } = this.props;
+    const { user, ...other } = this.props;
     return (
       <div className="app-wrapper">
         <Menu />
