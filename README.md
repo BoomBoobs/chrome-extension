@@ -11,3 +11,9 @@ When you will be tired of seeing boobs on your Facebook timeline, just delete th
 - Open Google Chrome extension tab ([chrome://extensions](chrome://extensions))
 - Drag **boomboobs.crx** on your Google Chrome extensions tab
 - Enjoy boobs on Facebook
+
+## Contribute
+The project is built on top of [React](https://facebook.github.io/react/) and [revenge](https://github.com/buildo/revenge). 
+Feel free to contribute, also opening issues and/or suggesting new features.
+
+
