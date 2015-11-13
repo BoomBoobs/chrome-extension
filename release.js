@@ -1,18 +1,5 @@
-import { exec } from 'child_process';
+import execThen from './utils/execThen';
 import packingCrx from './utils/packingCrx';
-
-const execThen = (cmd) => new Promise((resolve, reject) => {
-  console.log(`Executing: ${cmd}`);
-  exec(cmd, (err, o, i) => {
-    if (err) throw err;
-    console.log('Done!');
-    return resolve({
-      err,
-      stdout: o,
-      stderr: i
-    })
-  });
-});
 
 
 const releaseType = process.argv.slice(2)[0];
@@ -62,5 +49,4 @@ packingCrx(`${newVersion}`)
           .then(() => execThen(`git tag v${newVersion}`))
           .then(() => execThen('git push origin master --tags'))
       })
-  )
-  .then();
+  );

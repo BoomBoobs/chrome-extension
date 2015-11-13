@@ -18,7 +18,6 @@ module.exports = _.extend({}, base, {
   entry: {
     popup: [
       'webpack-dev-server/client',
-      'webpack/hot/only-dev-server',
       path.resolve(paths.SRC, 'popup/index.js')
     ]
   },
