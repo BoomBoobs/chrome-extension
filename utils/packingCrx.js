@@ -6,7 +6,7 @@ import execThen from './execThen';
 export default (version) => new Promise((resolve, reject) => {
   let manifest = require(join(__dirname, '..', 'src', 'manifest.json'));
   manifest.version = version;
-  fs.writeFileSync(join(__dirname, '..', 'src', 'manifest.json'), JSON.stringify(manifest));
+  fs.writeFileSync(join(__dirname, '..', 'src', 'manifest.json'), JSON.stringify(manifest, null, 2));
 
 
   const crx = new ChromeExtension({
