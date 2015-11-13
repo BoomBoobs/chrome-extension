@@ -48,7 +48,7 @@
   "scripts": {
     "start": "rm -rf dev/ && webpack-dev-server --config webpack/webpack.dev.config.babel.js --progress --hot --inline",
     "build": "rm -rf build/ && webpack --config webpack/webpack.build.config.babel.js --progress",
-    "package": "node --harmony package.js",
+    "package": "babel-node package.js",
     "release": "babel-node release.js",
     "serve": "cd build && http-server",
     "lint": "eslint ./src",

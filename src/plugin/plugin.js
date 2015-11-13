@@ -29,7 +29,6 @@ const startToAddBoobsPost = () => {
 
   const readyToAttachBoobsOnScroll = () => {
     const facebookBoobsPostDelta = getFacebookPostsLength() - getBoobsPostsLength();
-
     if (previousFacebookPostsLength < getFacebookPostsLength() && facebookBoobsPostDelta >= boobsPostRatio) {
       appendBoobs(facebookBoobsPostDelta);
       previousFacebookPostsLength = getFacebookPostsLength();
