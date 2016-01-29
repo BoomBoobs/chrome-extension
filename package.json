@@ -6,7 +6,7 @@
   "dependencies": {
     "axios": "^0.7.0",
     "eslint": "^1.6.0",
-    "lodash": "^3.10.1",
+    "lodash": "^4.1.0",
     "moment": "^2.10.6",
     "normalize.css": "^3.0.3",
     "parse": "^1.6.4",
