@@ -3,11 +3,10 @@ import cx from 'classnames';
 import { props, pure, skinnable, t } from 'revenge';
 import App from '../../../../BoomBoobsApp';
 import Select from 'react-select';
-import assign from 'lodash/object/assign';
-import includes from 'lodash/collection/includes';
+import { includes } from 'lodash';
 import { FlexView, LoadingSpinner } from 'revenge-react-components';
 
-import 'buildo-react-components/lib/loading-spinner/style.css';
+import 'buildo-react-components/src/loading-spinner/style.scss';
 import 'react-select/dist/default.css';
 import './boobsCreatePost.scss';
 const initialState = {
@@ -85,9 +84,13 @@ export default class BoobsCreatePost extends React.Component {
   onBoobOwnerChange = (id) => this.updateBoobsOwner('id', id)
 
   updateBoobsOwner = (key, value) => {
+    const boobsOwner = {
+      ...this.state.form.boobsOwner,
+      [key]: value
+    };
     this.setState({
       form: {
-        boobsOwner: assign({}, this.state.form.boobsOwner, { [key]: value })
+        boobsOwner
       }
     });
   }

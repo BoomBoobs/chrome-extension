@@ -4,12 +4,11 @@ import { RouteHandler } from 'react-router-transition-context';
 import { listener, props, t } from 'revenge';
 import BoomBoobsApp from '../../BoomBoobsApp';
 
-require('normalize.css/normalize.css');
-require('buildo-react-components/lib/flex/flexView.css');
-require('../theme/style.scss');
+import 'normalize.css/normalize.css';
+import 'buildo-react-components/src/flex/flexView.scss';
+import '../theme/style.scss';
 
-
-@listener(BoomBoobsAppContainer.prototype.forceUpdate)
+@listener(BoomBoobsAppContainer.prototype.forceUpdate) // eslint-disable-line no-use-before-define
 @props({
   app: BoomBoobsApp,
   router: t.Func

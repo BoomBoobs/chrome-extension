@@ -3,9 +3,7 @@ import Parse from 'parse';
 class BoobsOwner extends Parse.Object {
   constructor(boobsOwner) {
     super('BoobsOwner');
-    for(let k in boobsOwner) {
-      k && this.set(k, boobsOwner[k]);
-    }
+    Object.keys(boobsOwner).forEach(k => k && this.set(k, boobsOwner[k]));
   }
 }
 

@@ -35,7 +35,7 @@ export default function BoobPost(boobs) {
             </div>
           </div>
         </div>
-      )
+      );
     }
   }
 

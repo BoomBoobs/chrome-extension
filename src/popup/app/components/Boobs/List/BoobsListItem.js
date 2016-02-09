@@ -20,7 +20,7 @@ export default class BoobsListItem extends React.Component {
       boobsOwner: {
         displayName: `${boobsOwner.get('firstName')} ${boobsOwner.get('lastName')}`
       }
-    }
+    };
   }
 
   template({ preview, boobsOwner: { displayName } }) {

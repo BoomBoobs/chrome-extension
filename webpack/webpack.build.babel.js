@@ -57,13 +57,6 @@ module.exports = _.extend({}, base, {
 
   module: _.extend({}, base.module, {
     loaders: base.module.loaders.concat([
-      // babel transpiler
-      {
-        test: /\.js$/, // test for both js and jsx
-        loaders: ['babel?stage=0&loose'],
-        exclude: [/node_modules/, paths.ASSETS],
-        include: [paths.SRC, paths.TEST]
-      },
       // style!css loaders for semantic
       {
         test: /\.css$/,

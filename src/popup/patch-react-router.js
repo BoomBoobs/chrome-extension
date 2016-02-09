@@ -28,7 +28,7 @@ export default function patchReactRouter(router) {
   router.makeHrefPatch = function(state, params, query) {
     const { ps, q, s } = makeArgs(state, params, query);
     return router.makeHref(s, ps, q);
-  }
+  };
 
   return router;
 }

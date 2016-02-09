@@ -5,20 +5,16 @@ const
   config = require('../config'),
   paths = require('../paths');
 
-
-const babelLoaders = ['babel?loose&stage=0'];
-
-if (config.reactHot) {
-  babelLoaders.unshift('react-hot');
-}
-
-
 module.exports = _.extend({}, base, {
 
   entry: {
     popup: [
       'webpack-dev-server/client',
       path.resolve(paths.SRC, 'popup/index.js')
+    ],
+    plugin: [
+      'webpack-dev-server/client',
+      path.resolve(paths.SRC, 'plugin/plugin.js')
     ]
   },
 
@@ -42,13 +38,6 @@ module.exports = _.extend({}, base, {
 
   module: _.extend({}, base.module, {
     loaders: base.module.loaders.concat([
-      // babel transpiler
-      {
-        test: /\.jsx?$/, // test for both js and jsx
-        loaders: babelLoaders,
-        exclude: [/node_modules/, paths.ASSETS],
-        include: [paths.SRC, paths.TEST]
-      },
       {
         test: /\.css?$/,
         loaders: ['style-loader', 'css-loader']
