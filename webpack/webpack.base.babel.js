@@ -4,7 +4,6 @@ const paths = require('../paths');
 const config = require('../config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
 const preLoaders = config.eslint ? [
   // linting with eslint
   {
@@ -30,17 +29,19 @@ module.exports = {
       chunks: ['popup']
     })
   ],
-  externals: {
-    'window': 'window',
-    'require': 'require'
-  },
-
+  externals: { window: 'window' },
   module: {
     preLoaders,
     loaders: [
+      {
+        test: /\.js$/, // test for both js and jsx
+        loaders: ['babel?stage=0&loose'],
+        exclude: [/node_modules/, paths.ASSETS],
+        include: [paths.SRC, paths.TEST, /buildo-react-components/]
+      },
       // copy required static files
       {
-        test: /\.(html|jpg|png|json)$/,
+        test: /\.(jpg|png|json)$/,
         loader: `file-loader?name=[path][name].[ext]&context=${paths.SRC}`
       },
       {
