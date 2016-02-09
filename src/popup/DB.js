@@ -29,7 +29,7 @@ export default class DB {
   }
 
   deleteBoobsFile() {
-    return this.data.boobsFile = null;
+    this.data.boobsFile = null;
   }
 
   pushError(error) {

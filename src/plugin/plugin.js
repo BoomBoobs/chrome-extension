@@ -1,7 +1,6 @@
-require('../manifest.json');
-require('../icon.jpg');
-require('!file?name=plugin/styles/facebook.css!less!./styles/facebook.less');
-
+import '../manifest.json';
+import '../icon.jpg';
+import '!file?name=plugin/styles/facebook.css!less!./styles/facebook.less';
 
 import window from 'window';
 import { filter, first, pullAt, random, range } from 'lodash';
@@ -27,15 +26,7 @@ const startToAddBoobsPost = () => {
 
   let previousFacebookPostsLength = getFacebookPostsLength();
 
-  const readyToAttachBoobsOnScroll = () => {
-    const facebookBoobsPostDelta = getFacebookPostsLength() - getBoobsPostsLength();
-    if (previousFacebookPostsLength < getFacebookPostsLength() && facebookBoobsPostDelta >= boobsPostRatio) {
-      appendBoobs(facebookBoobsPostDelta);
-      previousFacebookPostsLength = getFacebookPostsLength();
-    }
-  };
-
-  let boobsIds = [];
+  const boobsIds = [];
 
   const appendBoobs = (facebookBoobsPostDelta) => {
 
@@ -55,6 +46,15 @@ const startToAddBoobsPost = () => {
       error: () => {}
     });
 
+  };
+
+
+  const readyToAttachBoobsOnScroll = () => {
+    const facebookBoobsPostDelta = getFacebookPostsLength() - getBoobsPostsLength();
+    if (previousFacebookPostsLength < getFacebookPostsLength() && facebookBoobsPostDelta >= boobsPostRatio) {
+      appendBoobs(facebookBoobsPostDelta);
+      previousFacebookPostsLength = getFacebookPostsLength();
+    }
   };
 
   document.addEventListener('scroll', readyToAttachBoobsOnScroll);
