@@ -1,3 +1,3 @@
 import packingCrx from './utils/packingCrx';
-
-packingCrx('dev-version');
+const version = process.argv.slice(2)[0] || 'dev-version';
+packingCrx(version);
