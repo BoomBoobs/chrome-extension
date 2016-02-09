@@ -30,7 +30,7 @@
     "css-loader": "^0.21.0",
     "eslint": "^1.5.1",
     "eslint-config-airbnb": "0.0.8",
-    "eslint-loader": "^1.0.0",
+    "eslint-loader": "^1.2.1",
     "eslint-plugin-no-copy-paste-default-export": "0.0.2",
     "eslint-plugin-react": "^3.5.0",
     "extract-text-webpack-plugin": "^0.8.2",
