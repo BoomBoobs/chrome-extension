@@ -15,6 +15,9 @@ const preLoaders = config.eslint ? [
 ] : [];
 
 module.exports = {
+  resolve: {
+    root: [paths.NODE_MODULES, paths.SRC, paths.COMPONENTS, paths.ROUTES]
+  },
   stats: {
     children: false
   },
@@ -34,9 +37,9 @@ module.exports = {
     preLoaders,
     loaders: [
       {
-        test: /\.js$/, // test for both js and jsx
+        test: /\.jsx?$/, // test for both js and jsx
         loaders: ['babel?stage=0&loose'],
-        exclude: [/node_modules/, paths.ASSETS],
+        exclude: [paths.ASSETS],
         include: [paths.SRC, paths.TEST, /buildo-react-components/]
       },
       // copy required static files
