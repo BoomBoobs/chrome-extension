@@ -1,6 +1,3 @@
 {
-  "extends": "buildo",
-  "rules": {
-    "react/jsx-indent": 0
-  }
+  "extends": "buildo"
 }
