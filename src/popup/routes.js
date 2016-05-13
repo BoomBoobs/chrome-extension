@@ -8,8 +8,8 @@ import BoobsPostFinder from './app/routes/BoobsPostFinder/BoobsPostFinder';
 export default (
   <Route handler={BoomBoobsAppContainer}>
     <Route handler={BoomBoobsAppAuthContainer}>
-      <Route name="boobs-post-finder" path="/finder" handler={BoobsPostFinder} />
-      <DefaultRoute name="boobs-post-create" handler={BoobsPostCreate} />
+      <Route name='boobs-post-finder' path='/finder' handler={BoobsPostFinder} />
+      <DefaultRoute name='boobs-post-create' handler={BoobsPostCreate} />
     </Route>
   </Route>
 );

@@ -21,8 +21,8 @@ export default class BoobsList extends React.Component {
 
   template({ boobsList }) {
     return (
-      <div className="boob-post-list">
-        <FlexView grow column vAlignContent="center">
+      <div className='boob-post-list'>
+        <FlexView grow column vAlignContent='center'>
           {boobsList.map(b => <BoobsListItem boobs={b} />)}
         </FlexView>
       </div>

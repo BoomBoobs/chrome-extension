@@ -19,7 +19,7 @@ export default class BoomBoobsAppAuthContainer extends React.Component {
   render() {
     const { user, ...other } = this.props;
     return (
-      <div className="app-wrapper">
+      <div className='app-wrapper'>
         <Menu />
         {user && <RouteHandler {...other} />}
       </div>
