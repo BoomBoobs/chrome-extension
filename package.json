@@ -5,6 +5,7 @@
   "main": "src/plugin.js",
   "dependencies": {
     "axios": "^0.7.0",
+    "buildo-react-components": "^0.4.0",
     "history": "^1.17.0",
     "lodash": "^4.3.0",
     "moment": "^2.10.6",

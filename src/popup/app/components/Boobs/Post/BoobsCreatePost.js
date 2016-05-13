@@ -4,7 +4,7 @@ import { props, pure, skinnable, t } from 'revenge';
 import App from '../../../../BoomBoobsApp';
 import Select from 'react-select';
 import { includes } from 'lodash';
-import { FlexView, LoadingSpinner } from 'revenge-react-components';
+import { FlexView, LoadingSpinner } from 'Basic';
 
 import 'buildo-react-components/src/loading-spinner/style.scss';
 import 'react-select/dist/default.css';
