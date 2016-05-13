@@ -2,7 +2,7 @@ import React from 'react';
 import { RouteHandler } from 'react-router-transition-context';
 import { props, queries, t } from 'revenge';
 import { authenticated } from 'revenge/lib/util';
-import Menu from '../components/Basic/Menu/Menu';
+import Menu from 'popup/app/components/Menu/Menu';
 
 @authenticated()
 @queries(['user'])
