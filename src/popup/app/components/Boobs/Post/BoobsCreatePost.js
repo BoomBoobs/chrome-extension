@@ -154,16 +154,16 @@ export default class BoobsCreatePost extends React.Component {
 
   template(locals) {
     const uploadBoobsFileBlock = () => (
-      <div className="boob-file">
-        <label htmlFor="boobsFile">Choose the boobs to uplaod:</label>
-        <FlexView grow row vAlignContent="center">
+      <div className='boob-file'>
+        <label htmlFor='boobsFile'>Choose the boobs to uplaod:</label>
+        <FlexView grow row vAlignContent='center'>
           <FlexView column>
             <input
-              ref="boobsFile"
-              type="file"
-              name="boobsFile"
+              ref='boobsFile'
+              type='file'
+              name='boobsFile'
               onChange={locals.onBoobsFileChange}
-              accept="image/*"
+              accept='image/*'
             />
           </FlexView>
         </FlexView>
@@ -173,51 +173,49 @@ export default class BoobsCreatePost extends React.Component {
     const boobsOwnerBlock = () => (
       <div>
         <img src={locals.boobsFile && locals.boobsFile.url} />
-        <FlexView column grow className="boobs-owner">
-          {!locals.addNewBoobsOwner ?
-            (
-              <FlexView column grow>
-                <h3>Select boobs owner!</h3>
-                {!locals.boobsOwnersLoading &&
-                  <Select
-                    options={locals.boobsOwnersOptions}
-                    filterOptions={locals.filterOptions}
-                    onChange={locals.onBoobOwnerChange}
-                    value={locals.form && locals.form.boobsOwner.id}
-                    placeholder={"Who is the owner of those boobs?"}
-                  />
-                }
-              </FlexView>
-            ) : (
-              <FlexView column grow>
-                <h3>New boobs owner</h3>
-                <div>
-                  <label>Firstname</label>
-                  <input
-                    type="text"
-                    onChange={locals.bindBoobsOwnerKey('firstName')}
-                    value={locals.form.boobsOwner.firstName}
-                  />
-                </div>
-                <div>
-                  <label>Lastname</label>
-                  <input
-                    type="text"
-                    onChange={locals.bindBoobsOwnerKey('lastName')}
-                    value={locals.form.boobsOwner.lastName}
-                  />
-                </div>
-                <div>
-                  <label>Website (if any)</label>
-                  <input
-                    type="text"
-                    onChange={locals.bindBoobsOwnerKey('website')}
-                    value={locals.form.boobsOwner.website}
-                  />
-                </div>
-              </FlexView>
-            )
-          }
+        <FlexView column grow className='boobs-owner'>
+          {!locals.addNewBoobsOwner ? (
+            <FlexView column grow>
+              <h3>Select boobs owner!</h3>
+              {!locals.boobsOwnersLoading && (
+                <Select
+                  options={locals.boobsOwnersOptions}
+                  filterOptions={locals.filterOptions}
+                  onChange={locals.onBoobOwnerChange}
+                  value={locals.form && locals.form.boobsOwner.id}
+                  placeholder={"Who is the owner of those boobs?"}
+                />
+              )}
+            </FlexView>
+          ) : (
+            <FlexView column grow>
+              <h3>New boobs owner</h3>
+              <div>
+                <label>Firstname</label>
+                <input
+                  type='text'
+                  onChange={locals.bindBoobsOwnerKey('firstName')}
+                  value={locals.form.boobsOwner.firstName}
+                />
+              </div>
+              <div>
+                <label>Lastname</label>
+                <input
+                  type='text'
+                  onChange={locals.bindBoobsOwnerKey('lastName')}
+                  value={locals.form.boobsOwner.lastName}
+                />
+              </div>
+              <div>
+                <label>Website (if any)</label>
+                <input
+                  type='text'
+                  onChange={locals.bindBoobsOwnerKey('website')}
+                  value={locals.form.boobsOwner.website}
+                />
+              </div>
+            </FlexView>
+          )}
           <label>
             Or <a onClick={locals.togglAddNewBoobsOwner}>{locals.addNewBoobsOwner ? 'choose' : 'add'}</a> a boobs owner!
           </label>
@@ -226,7 +224,7 @@ export default class BoobsCreatePost extends React.Component {
     );
 
     return (
-      <form className="boobs-post-create-form" onSubmit={locals.onSubmit}>
+      <form className='boobs-post-create-form' onSubmit={locals.onSubmit}>
         {!locals.boobsFile && uploadBoobsFileBlock()}
         {locals.boobsFile && boobsOwnerBlock()}
         {locals.boobsFile && (
@@ -237,7 +235,7 @@ export default class BoobsCreatePost extends React.Component {
             Create BoobsPost!
           </button>
         )}
-        {locals.loading && <LoadingSpinner size="20px" />}
+        {locals.loading && <LoadingSpinner size='20px' />}
       </form>
     );
   }

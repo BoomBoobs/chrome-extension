@@ -25,7 +25,7 @@ export default class BoobsListItem extends React.Component {
 
   template({ preview, boobsOwner: { displayName } }) {
     return (
-      <FlexView grow column className="boobs-post">
+      <FlexView grow column className='boobs-post'>
         <img src={preview} />
         <div>{displayName}</div>
       </FlexView>

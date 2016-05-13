@@ -6,7 +6,7 @@ export default class UserContent extends React.Component {
     const boobsOwnerDisplayName = `${boobsOwner.get('firstName')} ${boobsOwner.get('lastName')}`;
 
     return (
-      <div className="_5pbx userContent">
+      <div className='_5pbx userContent'>
         <p>{boobsOwnerDisplayName}</p>
       </div>
     );
