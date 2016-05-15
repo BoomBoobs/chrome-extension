@@ -6,7 +6,7 @@ import BoomBoobsApp from '../../BoomBoobsApp';
 
 import 'normalize.css/normalize.css';
 import 'buildo-react-components/src/flex/flexView.scss';
-import '../theme/style.scss';
+import 'theme/style.scss';
 
 @listener(BoomBoobsAppContainer.prototype.forceUpdate) // eslint-disable-line no-use-before-define
 @props({

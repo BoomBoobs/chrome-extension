@@ -1,6 +1,6 @@
 import React from 'react';
 import { props, pure, skinnable } from 'revenge';
-import { FlexView } from 'revenge-react-components';
+import { FlexView } from 'Basic';
 
 import { Boobs } from '../../../models';
 
