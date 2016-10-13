@@ -38,7 +38,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/, // test for both js and jsx
-        loaders: ['babel?stage=0&loose'],
+        loader: 'babel',
         exclude: [paths.ASSETS],
         include: [paths.SRC, paths.TEST, /buildo-react-components/]
       },
